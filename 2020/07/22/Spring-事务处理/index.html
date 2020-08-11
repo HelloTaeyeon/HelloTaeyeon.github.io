@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="ghost">
 <meta property="og:description" content="Spring中通常使用以下两种方式实现事务的管理 使用spirng的事务注解管理使用  使用事务管理器PlatformTransationManager接口，他有两个具体的实现类 DataSourceTransationManager，用于mybatis和JDBC操作数据库时使用 HibernateTransationManager，用于Hibernate操作数据库时使用     使用aspect">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/tal.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/spring.png">
-<meta property="og:image" content="http://yoursite.com/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/aspectj.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/tal.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/spring.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/aspectj.png">
 <meta property="article:published_time" content="2020-07-22T01:12:04.000Z">
 <meta property="article:modified_time" content="2020-07-22T11:34:11.159Z">
 <meta property="article:author" content="Taeyeon">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/tal.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/tal.png">
   
     <link rel="alternative" href="/atom.xml" title="ghost" type="application/atom+xml">
   
@@ -236,10 +236,10 @@
 <li>noRollbackForClassName：指定不需要回滚的异常类类名。类型为 String[]，默认值为空数组。当然，若只有一个异常类时，可以不使用数组。</li>
 <li>需要注意的是，@Transactional 若用在方法上，只能用于 public 方法上。对于其他非 public方法，如果加上了注解@Transactional，虽然 Spring 不会报错，但不会将指定事务织入到该方法中。因为 Spring 会忽略掉所有非 public 方法上的@Transaction 注解。若@Transaction 注解在类上，则表示该类上所有的方法均将在执行时织入事务。</li>
 </ul>
-<p><img src="spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/tal.png"></p>
-<p><img src="spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/spring.png"></p>
+<p><img src="/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/tal.png"></p>
+<p><img src="/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/spring.png"></p>
 <h5 id="AspectJ的aop管理事务："><a href="#AspectJ的aop管理事务：" class="headerlink" title="AspectJ的aop管理事务："></a>AspectJ的aop管理事务：</h5><p>​    method标签可以指定多个，也可以在name属性中使用通配符*；</p>
-<p><img src="spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/aspectj.png"></p>
+<p><img src="/2020/07/22/Spring-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/aspectj.png"></p>
 
       
       
@@ -538,15 +538,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mybatis映射文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis主配置文件</a>
+                <a href="javascript:void(0)" class="js-tag color5">学MyBatis后的基础总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学MyBatis后的基础总结</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis主配置文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,11 +566,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color4">url</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">url</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,10 +579,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据结构与</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mybatis映射文件</a>
               </li>
             
             <div class="clearfix"></div>

@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="ghost">
 <meta property="og:description" content="MyBatis的主要功能： sql mapper（sql映射）： 将数据库表的每一行映射成一个对象，然后通过操作这些对象来操作表中的数据   Data Access Object：数据访问 对数据库进行增删改查">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/07/20/MyBatis%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/MyBatis%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/MyBatis%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%AD%A5%E9%AA%A4.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/20/MyBatis%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/MyBatis%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%AD%A5%E9%AA%A4.png">
 <meta property="article:published_time" content="2020-07-20T01:52:57.000Z">
 <meta property="article:modified_time" content="2020-07-21T14:05:34.922Z">
 <meta property="article:author" content="Taeyeon">
 <meta property="article:tag" content="学MyBatis后的基础总结">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/20/MyBatis%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/MyBatis%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/MyBatis%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%AD%A5%E9%AA%A4.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/20/MyBatis%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/MyBatis%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%AD%A5%E9%AA%A4.png">
   
     <link rel="alternative" href="/atom.xml" title="ghost" type="application/atom+xml">
   
@@ -213,7 +213,7 @@
 <li>sqlSession默认不提交事务，如果需要默认提交，可以在获取sqlSession的时候使用.openSession（true）</li>
 <li>查询不用提交事务，DML语句（insert,delete,update）最后要提交事务（sqlSession.commit()）。</li>
 </ul>
-<p><img src="MyBatis%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/MyBatis%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%AD%A5%E9%AA%A4.png" alt="MyBatis使用完整步骤"></p>
+<p><img src="/2020/07/20/MyBatis%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/MyBatis%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%95%B4%E6%AD%A5%E9%AA%A4.png" alt="MyBatis使用完整步骤"></p>
 <h5 id="MyBatis动态代理的使用："><a href="#MyBatis动态代理的使用：" class="headerlink" title="MyBatis动态代理的使用："></a>MyBatis动态代理的使用：</h5><ul>
 <li>获取sqlSession的步骤与上面相同</li>
 <li>动态代理帮助我们实现接口，然后我们直接调用方法就可以了，省略的指定sql语句标识的步骤</li>
@@ -513,15 +513,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mybatis映射文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis主配置文件</a>
+                <a href="javascript:void(0)" class="js-tag color5">学MyBatis后的基础总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学MyBatis后的基础总结</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis主配置文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +541,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color4">url</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">url</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,10 +554,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据结构与</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mybatis映射文件</a>
               </li>
             
             <div class="clearfix"></div>
