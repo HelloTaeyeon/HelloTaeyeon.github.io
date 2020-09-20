@@ -62,7 +62,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 27
+			总文章数 28
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -152,6 +152,117 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-JAVA线程池底层原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">JAVA线程池底层原理</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+        
+        
+        <a href="/2020/09/20/JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-09-20T09:12:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="什么是线程池"><a href="#什么是线程池" class="headerlink" title="什么是线程池"></a>什么是线程池</h5><p>​    线程池就是一些线程的集合，使用线程池可以很好的提升性能，减少创建线程，销毁线程的花费，当程序将一个任务传给线程池后，线程池就会启动一条线程来完成这个任务，当线程执行结束后，并不会销毁该线程，而是将线程返回线程池中成为空闲状态，等待下一次任务执行。</p>
+<h5 id="线程池的工作机制"><a href="#线程池的工作机制" class="headerlink" title="线程池的工作机制"></a>线程池的工作机制</h5><ul>
+<li>在线程池的编程模式下，任务是提交给线程池的，在线程池拿到一个任务后，会在线程池内部寻找一个空闲的线程来执行任务。</li>
+<li>一个线程同时只能执行一个任务，但是可以同时向一个线程池提交多个任务。</li>
+</ul>
+<h5 id="线程池的好处"><a href="#线程池的好处" class="headerlink" title="线程池的好处"></a>线程池的好处</h5><p>​    多线程的环境下，系统会不断的创建和销毁线程，这样做的成本非常高，会过度消耗系统资源，以及过度切换线程的危险，从而导致系统奔溃，而线程池就可以很好的避免这个问题。</p>
+<h5 id="四种常用线程池"><a href="#四种常用线程池" class="headerlink" title="四种常用线程池"></a>四种常用线程池</h5><p>​    ExecutorService是Java提供的用于管理线程池的类该类的作用是用于控制线程数量和重用线程：</p>
+<ul>
+<li>Executors.newCacheThreadPool()：可缓存线程池，先查看线程池中有没有以前建立的线程，如果有，就直接使用，如果没有，就建立一个新的线程加入池中，这类线程池通常用于一些生存周期很短的异步型任务。</li>
+<li>Executors.newFixedThreadPool(int n)：创建一个可重用固定个数的线程池，以共享的无界队列方式来运行这些线程。</li>
+<li>Executors.newScheduledThreadPool(int n)：创建一个定长线程池，支持定时及周期性任务执行</li>
+<li>Executors.newSingleThreadExecutor()：创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</li>
+</ul>
+<p>​    以上四种创建线程池的方式都创建了ThreadPoolExecutor对象</p>
+<h5 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h5><ul>
+<li><p>corePoolSize：线程池的基本大小，即在没有任务需要执行时的线程池大小，只有当工作队列满了以后，线程池大小才会超过corePoolSize。</p>
+</li>
+<li><p>maximumPoolSize：线程池中允许的最大线程数，如果任务队列已满，并且线程数量小于maximumPoolSize时则会创建新的线程来执行任务</p>
+</li>
+<li><p>BlockingQueue</p>
+<ul>
+<li>直接提交队列（SynchronousQueue）：该队列没有容量，对于提交给线程池的任务不会保存，如果当前没有空闲的线程，则会尝试常见新的线程来执行任务，如果线程数量达到了maxinumPoolSize规定的最大值，则执行拒绝策略。</li>
+<li>有界任务队列（ArrayBlockingQueue）：在创建ArrayBlockingQueue对象时，可以指定队列容量，当有任务需要执行时，如果线程池中的线程数小于corePoolSize核心线程数则创建新的线程，如果大于corePoolSize核心线程数则加入等待队列，如果队列已满，则无法加入，在线程数小于maxinumPoolSize指定的最大线程数前提下会创建新的线程执行任务，如果大于则执行拒绝策略</li>
+<li>无界任务队列（LinkedBlockingQueue）：与有界任务队列相比，除非系统资源耗尽，否则无界队列不存在任务入队失败的情况，当有新的任务时，在线程数小于corePoolSize核心线程数则创建新的线程来执行任务，当线程数大于核心线程数则加入阻塞队列。</li>
+<li>优先任务队列（PriorityBlockingQueue）：是一个特殊的无界任务队列，与LinkedBlockingQueue的FIFO执行顺序不同，优先队列是根据线程任务的优先级来决定谁先执行的。</li>
+</ul>
+</li>
+<li><p>handler（拒绝策略）</p>
+<ul>
+<li>AbortPolicy：不执行新任务，直接抛出异常</li>
+<li>CallerRunsPolicy：直接调用当前线程执行任务</li>
+<li>DisdardOldestPolicy：将任务队列中最老的任务丢弃，尝试再次提交新任务</li>
+<li>DiscardPolicy：直接丢弃这个无法处理的任务</li>
+</ul>
+</li>
+</ul>
+
+      
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线程池</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/20/JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-RabbitMQ" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -866,88 +977,6 @@
 
 
   
-    <article id="post-SpringMVC-重定向和转发、异常处理、拦截器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/26/SpringMVC-%E9%87%8D%E5%AE%9A%E5%90%91%E5%92%8C%E8%BD%AC%E5%8F%91%E3%80%81%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E3%80%81%E6%8B%A6%E6%88%AA%E5%99%A8/">SpringMVC-重定向和转发、异常处理、拦截器</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-        
-        
-        <a href="/2020/07/26/SpringMVC-%E9%87%8D%E5%AE%9A%E5%90%91%E5%92%8C%E8%BD%AC%E5%8F%91%E3%80%81%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E3%80%81%E6%8B%A6%E6%88%AA%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-07-26T05:09:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="请求转发和重定向："><a href="#请求转发和重定向：" class="headerlink" title="请求转发和重定向："></a>请求转发和重定向：</h5><ul>
-<li>SpringMVC中的请求转发和重定向是无视视图解析器的，也就是说地址必须是完整地址。</li>
-<li>请求转发可以访问WEB-INF目录下的资源</li>
-<li>重定向不可以访问WEB-INF目录项的资源</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/07/26/SpringMVC-%E9%87%8D%E5%AE%9A%E5%90%91%E5%92%8C%E8%BD%AC%E5%8F%91%E3%80%81%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E3%80%81%E6%8B%A6%E6%88%AA%E5%99%A8/#more">more >></a>
-        
-      
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/26/SpringMVC-%E9%87%8D%E5%AE%9A%E5%90%91%E5%92%8C%E8%BD%AC%E5%8F%91%E3%80%81%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E3%80%81%E6%8B%A6%E6%88%AA%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
@@ -1041,11 +1070,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1081,11 +1114,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
