@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JAVA线程池底层原理 | ghost</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是线程池​    线程池就是一些线程的集合，使用线程池可以很好的提升性能，减少创建线程，销毁线程的花费，当程序将一个任务传给线程池后，线程池就会启动一条线程来完成这个任务，当线程执行结束后，并不会销毁该线程，而是将线程返回线程池中成为空闲状态，等待下一次任务执行。 线程池的工作机制 在线程池的编程模式下，任务是提交给线程池的，在线程池拿到一个任务后，会在线程池内部寻找一个空闲的线程来执行任务。">
+  <meta name="description" content="什么是线程池​    线程池就是一些线程的集合，使用线程池可以很好的提升性能，减少创建线程，销毁线程的花费，当程序将一个任务传给线程池后，线程池就会启动一条线程来完成这个任务，当线程执行结束后，并不会销毁该线程，而是将线程返回线程池中成为空闲状态，等待下一次任务执行。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA线程池底层原理">
 <meta property="og:url" content="http://yoursite.com/2020/09/20/JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="ghost">
-<meta property="og:description" content="什么是线程池​    线程池就是一些线程的集合，使用线程池可以很好的提升性能，减少创建线程，销毁线程的花费，当程序将一个任务传给线程池后，线程池就会启动一条线程来完成这个任务，当线程执行结束后，并不会销毁该线程，而是将线程返回线程池中成为空闲状态，等待下一次任务执行。 线程池的工作机制 在线程池的编程模式下，任务是提交给线程池的，在线程池拿到一个任务后，会在线程池内部寻找一个空闲的线程来执行任务。">
+<meta property="og:description" content="什么是线程池​    线程池就是一些线程的集合，使用线程池可以很好的提升性能，减少创建线程，销毁线程的花费，当程序将一个任务传给线程池后，线程池就会启动一条线程来完成这个任务，当线程执行结束后，并不会销毁该线程，而是将线程返回线程池中成为空闲状态，等待下一次任务执行。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-20T09:12:23.000Z">
-<meta property="article:modified_time" content="2020-09-20T11:14:40.359Z">
+<meta property="article:modified_time" content="2020-09-23T04:48:07.637Z">
 <meta property="article:author" content="Taeyeon">
 <meta property="article:tag" content="线程池">
 <meta name="twitter:card" content="summary">
@@ -188,6 +188,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h5 id="什么是线程池"><a href="#什么是线程池" class="headerlink" title="什么是线程池"></a>什么是线程池</h5><p>​    线程池就是一些线程的集合，使用线程池可以很好的提升性能，减少创建线程，销毁线程的花费，当程序将一个任务传给线程池后，线程池就会启动一条线程来完成这个任务，当线程执行结束后，并不会销毁该线程，而是将线程返回线程池中成为空闲状态，等待下一次任务执行。</p>
+<a id="more"></a>
+
 <h5 id="线程池的工作机制"><a href="#线程池的工作机制" class="headerlink" title="线程池的工作机制"></a>线程池的工作机制</h5><ul>
 <li>在线程池的编程模式下，任务是提交给线程池的，在线程池拿到一个任务后，会在线程池内部寻找一个空闲的线程来执行任务。</li>
 <li>一个线程同时只能执行一个任务，但是可以同时向一个线程池提交多个任务。</li>
@@ -516,11 +518,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mybatis映射文件</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis主配置文件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis主配置文件</a>
+                <a href="javascript:void(0)" class="js-tag color2">mybatis映射文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,11 +530,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,11 +550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
